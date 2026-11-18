@@ -1,1 +1,550 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annapurna Mahila Bachat Gat | Ghar Ka Swad & Shuddhata</title>
+    <style>
+        :root {
+            --bg-offwhite: #FAF7F2;
+            --bg-cream: #F3ECE1;
+            --bg-warm: #EFE5D5;
+            --terracotta: #C85A32;
+            --mustard: #E09F3E;
+            --forest-green: #2D5A27;
+            --deep-maroon: #7A1C1C;
+            --text-dark: #2C241E;
+            --text-muted: #5F544B;
+            --white: #FFFFFF;
+            --whatsapp: #25D366;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { background-color: var(--bg-offwhite); color: var(--text-dark); font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: Georgia, 'Times New Roman', serif; color: var(--deep-maroon); }
+        .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Live Offer Bar */
+        .offer-bar { background: var(--deep-maroon); color: var(--white); padding: 9px 15px; font-size: 0.9rem; text-align: center; font-weight: 500; }
+        
+        /* Navbar */
+        .navbar { background: var(--white); box-shadow: 0 2px 15px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 1000; padding: 12px 0; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo-icon { font-size: 2rem; }
+        .logo h1 { font-size: 1.35rem; line-height: 1.1; }
+        .logo p { font-size: 0.75rem; color: var(--forest-green); font-weight: 700; }
+        .nav-links { display: flex; gap: 16px; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--terracotta); }
+        .nav-actions { display: flex; align-items: center; gap: 10px; }
+        .lang-select { padding: 6px 10px; border: 1.5px solid var(--terracotta); border-radius: 6px; background: var(--bg-offwhite); font-weight: 600; cursor: pointer; }
+        .cart-btn { background: var(--terracotta); color: var(--white); border: none; padding: 8px 14px; border-radius: 25px; cursor: pointer; font-weight: 600; }
+        .cart-btn span { background: var(--mustard); color: var(--text-dark); font-size: 0.75rem; font-weight: bold; padding: 2px 7px; border-radius: 50%; margin-left: 4px; }
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--deep-maroon); }
 
+        /* Hero Section */
+        .hero { padding: 60px 0; background: linear-gradient(135deg, var(--bg-offwhite) 55%, var(--bg-warm) 100%); }
+        .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items: center; }
+        .badge-pill { display: inline-block; background: var(--bg-cream); border: 1px solid var(--mustard); color: var(--forest-green); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; margin-bottom: 15px; }
+        .hero-title { font-size: 2.5rem; line-height: 1.25; margin-bottom: 15px; }
+        .hero-subtitle { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 25px; }
+        .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 25px; }
+        .btn { padding: 12px 22px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.2s; }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary { background: var(--deep-maroon); color: var(--white); }
+        .btn-secondary { background: var(--mustard); color: var(--text-dark); }
+        .btn-whatsapp { background: var(--whatsapp); color: var(--white); }
+        .full-width { width: 100%; }
+        .guarantee-box { display: flex; align-items: center; gap: 15px; background: var(--white); padding: 14px 18px; border-radius: 10px; border-left: 5px solid var(--forest-green); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .guarantee-icon { font-size: 1.8rem; }
+        .hero-visual { background: linear-gradient(145deg, var(--terracotta), var(--deep-maroon)); color: var(--white); border-radius: 20px; padding: 35px; text-align: center; box-shadow: 0 15px 35px rgba(122,28,28,0.18); border: 6px solid var(--white); }
+        .hero-visual-emoji { font-size: 4.5rem; display: block; margin-bottom: 15px; }
+        .hero-visual h3 { color: var(--mustard); font-size: 1.6rem; margin-bottom: 10px; }
+        .stats-row { display: flex; justify-content: space-around; margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2); }
+        .stats-row strong { display: block; font-size: 1.4rem; color: var(--mustard); }
+
+        /* Sections */
+        .section { padding: 65px 0; }
+        .bg-cream { background-color: var(--bg-cream); }
+        .bg-warm { background-color: var(--bg-warm); }
+        .section-header { text-align: center; max-width: 680px; margin: 0 auto 40px; }
+        .sub-tag { color: var(--terracotta); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; }
+        .section-header h2 { font-size: 2.1rem; margin: 8px 0; }
+
+        /* Story Section */
+        .story-grid, .bulk-review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; align-items: center; }
+        .story-card-banner { background: var(--forest-green); color: var(--white); padding: 40px 30px; border-radius: 16px; text-align: center; border: 5px solid var(--white); }
+        .story-card-banner span { font-size: 4rem; display: block; margin-bottom: 12px; }
+        .story-card-banner h3 { color: var(--mustard); font-size: 1.5rem; margin-bottom: 10px; }
+        .member-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .member-tags span { background: var(--white); padding: 7px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; border: 1px solid var(--mustard); }
+
+        /* Products Catalogue */
+        .filter-tabs { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+        .filter-btn { padding: 8px 18px; border: 1.5px solid var(--terracotta); background: var(--white); color: var(--terracotta); border-radius: 25px; cursor: pointer; font-weight: 600; }
+        .filter-btn.active, .filter-btn:hover { background: var(--terracotta); color: var(--white); }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 25px; }
+        .product-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 6px 18px rgba(0,0,0,0.06); display: flex; flex-direction: column; border: 1px solid rgba(0,0,0,0.05); }
+        .product-thumb { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 4.5rem; background: var(--bg-cream); }
+        .product-info { padding: 18px; flex-grow: 1; display: flex; flex-direction: column; }
+        .maker-badge { background: #E8F5E9; color: var(--forest-green); font-size: 0.78rem; padding: 5px 10px; border-radius: 6px; font-weight: 600; margin-bottom: 10px; }
+        .product-info h3 { font-size: 1.2rem; margin-bottom: 6px; }
+        .ingredients { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; }
+        .price-row { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 10px; border-top: 1px dashed #DDD; }
+        .price-tag { font-size: 1.25rem; font-weight: 700; color: var(--deep-maroon); }
+        .card-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+        .btn-sm { padding: 9px 8px; font-size: 0.82rem; }
+
+        /* Combos & Process & Reels & Recipes */
+        .combo-grid, .process-grid, .reels-grid, .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .special-card, .process-step, .blog-card, .review-card, .bulk-form-box { background: var(--white); padding: 24px; border-radius: 15px; box-shadow: 0 6px 18px rgba(0,0,0,0.05); }
+        .special-card { border: 2px solid var(--mustard); position: relative; }
+        .ribbon { position: absolute; top: -12px; right: 18px; background: var(--terracotta); color: var(--white); padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; }
+        .special-card .price { font-size: 1.7rem; font-weight: 700; color: var(--forest-green); margin: 10px 0; }
+        .special-card ul { list-style: none; margin: 12px 0 18px; }
+        .special-card ul li { margin-bottom: 6px; }
+        .step-emoji { font-size: 2.8rem; display: block; margin-bottom: 10px; }
+        .certifications-bar { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; background: var(--forest-green); color: var(--white); padding: 25px; border-radius: 14px; margin-top: 35px; text-align: center; }
+        .reel-card { background: linear-gradient(160deg, var(--deep-maroon), var(--terracotta)); color: var(--white); padding: 30px 20px; border-radius: 15px; text-align: center; min-height: 240px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .reel-card span { font-size: 3rem; margin-bottom: 12px; }
+        .social-banner { margin-top: 25px; background: var(--white); padding: 16px 24px; border-radius: 12px; text-align: center; font-weight: 600; border: 1px solid var(--mustard); }
+        .blog-tag { background: var(--bg-warm); color: var(--terracotta); padding: 4px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: 700; display: inline-block; margin-bottom: 8px; }
+        .read-more { background: none; border: none; color: var(--deep-maroon); font-weight: 700; margin-top: 10px; cursor: pointer; font-size: 0.9rem; }
+
+        /* Bulk Form & Reviews */
+        .review-card { margin-top: 15px; }
+        .bulk-form-box form { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+        .bulk-form-box input, .bulk-form-box select, .bulk-form-box textarea { padding: 12px; border: 1px solid #CCC; border-radius: 8px; font-family: inherit; }
+
+        /* Footer & Floating Cart */
+        .footer { background: var(--text-dark); color: var(--bg-offwhite); padding: 50px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 25px; }
+        .footer h3, .footer h4 { color: var(--mustard); margin-bottom: 12px; }
+        .footer p, .footer a { color: #DDD; text-decoration: none; font-size: 0.9rem; display: block; margin-bottom: 6px; }
+        .footer-bottom { text-align: center; border-top: 1px solid #444; padding-top: 15px; font-size: 0.85rem; }
+        .floating-wa { position: fixed; bottom: 20px; right: 20px; background: var(--whatsapp); color: var(--white); padding: 12px 20px; border-radius: 30px; text-decoration: none; font-weight: 700; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 999; }
+        .cart-drawer { position: fixed; top: 0; right: -360px; width: 330px; height: 100vh; background: var(--white); box-shadow: -5px 0 20px rgba(0,0,0,0.15); z-index: 2000; transition: right 0.3s; display: flex; flex-direction: column; padding: 20px; }
+        .cart-drawer.open { right: 0; }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #EEE; padding-bottom: 10px; }
+        .cart-items { flex-grow: 1; overflow-y: auto; padding: 15px 0; }
+        .cart-item-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px dashed #DDD; }
+
+        @media (max-width: 850px) {
+            .hero-grid, .story-grid, .bulk-review-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; width: 100%; flex-direction: column; padding-top: 10px; }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .hero-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="offer-bar">
+        🎉 ₹500 se upar ke order par FREE Delivery! | Tyohar Special: Code <strong>MAHILA10</strong> lagayein aur 10% ki chhoot payein!
+    </div>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <span class="logo-icon">🌿</span>
+                <div>
+                    <h1>Annapurna SHG</h1>
+                    <p>Mahila Bachat Gat Udyog</p>
+                </div>
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <nav class="nav-links" id="navLinks">
+                <a href="#home">Home</a>
+                <a href="#story">Humari Kahani</a>
+                <a href="#products">Products</a>
+                <a href="#combos">Trial Box</a>
+                <a href="#process">Shuddhata</a>
+                <a href="#recipes">Recipes</a>
+                <a href="#bulk">Bulk Order</a>
+                <a href="#contact">Sampark</a>
+            </nav>
+            <div class="nav-actions">
+                <select id="languageSwitcher" class="lang-select" onchange="changeLanguage()">
+                    <option value="hi">हिंदी</option>
+                    <option value="en">English</option>
+                    <option value="mr">मराठी</option>
+                </select>
+                <button class="cart-btn" onclick="toggleCart()">🛒 <span id="cartCount">0</span></button>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container hero-grid">
+            <div>
+                <span class="badge-pill">✨ 100% Mahila Sashaktikaran & Swadeshi</span>
+                <h2 class="hero-title" data-key="hero_tagline">“Mahilaon ke haathon ka swad aur mehnat, ab aapke ghar tak”</h2>
+                <p class="hero-subtitle" data-key="hero_desc">Bina kisi milawat ya chemical ke, paramparik tarike se hamare bachat gat ki behno dwara banaye gaye shuddh achar, papad, masale aur hastkala utpad.</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary" data-key="btn_shop">Products Dekhein</a>
+                    <a href="#combos" class="btn btn-secondary" data-key="btn_trial">₹199 Trial Box Mangwayein</a>
+                </div>
+                <div class="guarantee-box">
+                    <span class="guarantee-icon">🛡️</span>
+                    <div>
+                        <strong>100% Swad aur Shuddhata ki Guarantee</strong>
+                        <p>Pasand na aane par aasan Return / Replacement suvidha</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <span class="hero-visual-emoji">👩‍🍳🧺🌶️</span>
+                <h3>Ghar Jaisa Shuddh Swad</h3>
+                <p>Hamari behno ke haathon se pyar aur safai se taiyar desi utpad</p>
+                <div class="stats-row">
+                    <div><strong>25+</strong><span>Mahilayein</span></div>
+                    <div><strong>100%</strong><span>Shuddhata</span></div>
+                    <div><strong>500+</strong><span>Khush Parivar</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="story" class="section bg-cream">
+        <div class="container">
+            <div class="section-header">
+                <span class="sub-tag">Hamara Safar</span>
+                <h2 data-key="story_title">Humari Kahani & Sadasya</h2>
+            </div>
+            <div class="story-grid">
+                <div class="story-card-banner">
+                    <span>🤝🇮🇳</span>
+                    <h3>Ekjut Mahila Shakti</h3>
+                    <p>2019 mein 10 behno se shuru hua safar aaj 25+ parivaron ki aatmanirbharta ban chuka hai.</p>
+                </div>
+                <div>
+                    <h3>Mahilaon ko Aatmanirbhar Banane ki Pahal</h3>
+                    <p style="margin: 12px 0; color: var(--text-muted);">Annapurna Mahila Bachat Gat ki shuruat gaon ki mahilaon ko rozgar dene ke uddeshya se hui thi. Aaj hamari behne bina kisi chemical ke shuddh achar, masale, papad aur hastkala utpad banati hain.</p>
+                    <div class="member-tags">
+                        <span>👩 Sunita Tai (Adhyaksha)</span>
+                        <span>👩 Kavita Didi (Masale)</span>
+                        <span>👩 Meena Tai (Achar & Papad)</span>
+                        <span>👩 Rekha Ji (Packaging)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="sub-tag">Shuddh & Taza</span>
+                <h2 data-key="prod_title">Hamare Udyog ke Products</h2>
+                <p>Har product ke niche use banane wali team ka naam diya gaya hai</p>
+            </div>
+            <div class="filter-tabs">
+                <button class="filter-btn active" onclick="filterProducts('all', this)">Sabhi (All)</button>
+                <button class="filter-btn" onclick="filterProducts('achar', this)">Achar</button>
+                <button class="filter-btn" onclick="filterProducts('masale', this)">Masale</button>
+                <button class="filter-btn" onclick="filterProducts('papad', this)">Papad</button>
+                <button class="filter-btn" onclick="filterProducts('craft', this)">Handicrafts</button>
+            </div>
+            <div class="product-grid" id="productGrid"></div>
+        </div>
+    </section>
+
+    <section id="combos" class="section bg-warm">
+        <div class="container">
+            <div class="section-header">
+                <span class="sub-tag">Khas Offers</span>
+                <h2>Trial Box & Monthly Subscription</h2>
+            </div>
+            <div class="combo-grid">
+                <div class="special-card">
+                    <span class="ribbon">Sabse Lokpriya</span>
+                    <h3>🎁 5-in-1 Achar Trial Box</h3>
+                    <p class="price">Sirf ₹199</p>
+                    <p>Pehli baar kharid rahe hain? Hamare 5 mashhoor achar (Aam, Nimbu, Mirchi, Mix, Lasun) ke sample pack mangwa kar swad chakhein.</p>
+                    <ul>
+                        <li>✔ 5 Alag-alag Swad (100g each)</li>
+                        <li>✔ 100% Ghar ka Sarson Tel</li>
+                    </ul>
+                    <button class="btn btn-whatsapp full-width" onclick="orderWhatsApp('5-in-1 Achar Trial Box (₹199)')">💬 WhatsApp par Trial Box Mangwayein</button>
+                </div>
+                <div class="special-card">
+                    <span class="ribbon" style="background: var(--forest-green);">Har Mahine Bachat</span>
+                    <h3>📅 Monthly Rashan / Swad Pack</h3>
+                    <p class="price">₹699 / Mahina</p>
+                    <p>Har mahine ki 1 tarikh ko apne ghar par taza pisey masale, urad papad aur snacks bina kisi jhanjhat ke payein.</p>
+                    <ul>
+                        <li>✔ 1 Kg Haldi-Mirchi-Dhaniya Pack</li>
+                        <li>✔ 500g Urad & Moong Papad</li>
+                    </ul>
+                    <button class="btn btn-primary full-width" onclick="orderWhatsApp('Monthly Subscription Pack (₹699/month)')">📅 Monthly Subscription Shuru Karein</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="sub-tag">Khet se Packet Tak</span>
+                <h2>Shuddhata aur Banane ki Prakriya</h2>
+            </div>
+            <div class="process-grid">
+                <div class="process-step"><span class="step-emoji">🌾</span><h4>1. Kacchi Samagri</h4><p>Seedhe kisano se taza haldi, mirchi aur masale kharide jate hain.</p></div>
+                <div class="process-step"><span class="step-emoji">☀️</span><h4>2. Dhoop mein Sukhana</h4><p>Safai se dhokar prakritik dhoop mein sukhaya jata hai.</p></div>
+                <div class="process-step"><span class="step-emoji"> mortar </span><h4>3. Paramparik Pisai</h4><p>Bina kisi artificial rang ya preservative ke taiyar.</p></div>
+                <div class="process-step"><span class="step-emoji">📦</span><h4>4. Hygienic Packing</h4><p>Airtight food-grade packs mein seal karke bheja jata hai.</p></div>
+            </div>
+            <div class="certifications-bar">
+                <div><strong>🏅 FSSAI Certified</strong><br><small>Lic: 1152400XXXXXXX</small></div>
+                <div><strong>🏛️ Udyam Registered</strong><br><small>MSME Govt. of India</small></div>
+                <div><strong>🏆 Zila Parishad Award</strong><br><small>Best SHG Enterprise 2026</small></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="recipes" class="section bg-cream">
+        <div class="container">
+            <div class="section-header">
+                <span class="sub-tag">Live Jhalak & Recipes</span>
+                <h2>Hamari Rasoi ke Reels & Swadisht Tips</h2>
+            </div>
+            <div class="reels-grid" style="margin-bottom: 30px;">
+                <div class="reel-card"><span>🎥</span><h4>Aam ka Achar Making</h4><p>15 Second Live Video Jhalak</p></div>
+                <div class="reel-card"><span>🫓</span><h4>Haath se Papad Belai</h4><p>20 Second Rasoi Video</p></div>
+                <div class="reel-card"><span>🧵</span><h4>Desi Kadhai & Silai</h4><p>18 Second Handicraft Jhalak</p></div>
+            </div>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <span class="blog-tag">15 Min Recipe</span>
+                    <h3>Kala Masala se 15 minute mein swadisht sabzi kaise banayein</h3>
+                    <p>Sirf 2 chammach ghar ka kuta Kala Masala aur bina pyaz-lahsun ke bhi shahi swad payein.</p>
+                    <button class="read-more" onclick="alert('Recipe: Kadhai mein tel garam karein, jeera dalein, apni sabzi aur 2 chammach Annapurna Kala Masala dalkar 10 min pakayein!')">Puri Recipe Padhein →</button>
+                </div>
+                <div class="blog-card">
+                    <span class="blog-tag">Evening Snack</span>
+                    <h3>Chatpati Urad Papad Chaat Recipe</h3>
+                    <p>Bhune hue urad papad ke upar barik kata pyaz, tamatar, nimbu aur hamara chaat masala.</p>
+                    <button class="read-more" onclick="alert('Recipe: Papad ko sek kar us par kata pyaz, tamatar, hara dhaniya aur nimbu nichod kar turant parosein!')">Puri Recipe Padhein →</button>
+                </div>
+            </div>
+            <div class="social-banner">
+                📸 Instagram aur YouTube par hamare daily updates dekhein: <strong>@AnnapurnaMahilaSHG</strong>
+            </div>
+        </div>
+    </section>
+
+    <section id="bulk" class="section bg-warm">
+        <div class="container bulk-review-grid">
+            <div>
+                <h3>Grahakon ke Anubhav ❤️</h3>
+                <div class="review-card"><p>⭐⭐⭐⭐⭐<br>"Aam ka achar bilkul meri dadi ke haathon jaisa bana hai. Tel aur masale ekdum shuddh hain."</p><strong>- Priya Deshmukh, Pune</strong></div>
+                <div class="review-card"><p>⭐⭐⭐⭐⭐<br>"Diwali par office ke liye 50 gift hampers mangwaye the. Packaging aur quality lajawab thi."</p><strong>- Rajesh Sharma, Mumbai</strong></div>
+            </div>
+            <div class="bulk-form-box">
+                <h3>🎁 Bulk Order & Corporate Gifting</h3>
+                <p>Shadi-byah, Diwali, Rakhi ya Office gifts ke liye thok (bulk) mein order dein.</p>
+                <form onsubmit="submitBulkOrder(event)">
+                    <input type="text" id="bulkName" placeholder="Aapka Naam / Company ka Naam" required>
+                    <input type="tel" id="bulkPhone" placeholder="Mobile / WhatsApp Number" required>
+                    <select id="bulkType">
+                        <option value="Shadi / Function Order">Shadi / Parivarik Function</option>
+                        <option value="Festival Gift Hampers">Tyohar Gift Hampers (Diwali/Rakhi)</option>
+                        <option value="Dukaan / Retail Wholesale">Dukaan ke liye Thok Samaan</option>
+                    </select>
+                    <textarea id="bulkMsg" rows="3" placeholder="Kitne packs chahiye aur kaunse products?"></textarea>
+                    <button type="submit" class="btn btn-primary full-width">WhatsApp par Quotation Mangwayein</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="footer">
+        <div class="container footer-grid">
+            <div>
+                <h3>🌿 Annapurna Mahila Bachat Gat</h3>
+                <p>Mahilaon ke haathon ka swad aur mehnat, ab aapke ghar tak.</p>
+                <p>📍 Gram Panchayat ke paas, Main Road, Pune, Maharashtra - 411044</p>
+                <p>📞 +91 98765 43210 | ✉️ order@annapurnashg.in</p>
+            </div>
+            <div>
+                <h4>Jaldi Links</h4>
+                <a href="#products">Sabhi Products</a>
+                <a href="#combos">₹199 Trial Box</a>
+                <a href="#process">FSSAI & Shuddhata</a>
+                <a href="#bulk">Bulk Gifting</a>
+            </div>
+            <div>
+                <h4>Hamara Kendra</h4>
+                <p>Somwar se Shanivar: Subah 9:00 baje se Shaam 7:00 baje tak</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 Annapurna Mahila Bachat Gat Udyog. All Rights Reserved.</div>
+    </footer>
+
+    <a href="https://wa.me/919876543210?text=Namaste!%20Mujhe%20Mahila%20Bachat%20Gat%20ke%20products%20ke%20baare%20mein%20jankari%20chahiye." class="floating-wa" target="_blank">💬 WhatsApp Chat</a>
+
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Aapki Tokri (Cart)</h3>
+            <button onclick="toggleCart()" style="border:none; background:none; font-size:1.2rem; cursor:pointer;">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems"><p>Abhi aapki tokri khali hai.</p></div>
+        <div>
+            <p style="font-size:1.15rem; margin-bottom:10px;"><strong>Kul Rashi: <span id="cartTotal">₹0</span></strong></p>
+            <button class="btn btn-whatsapp full-width" onclick="checkoutWhatsApp()">💬 WhatsApp par Order Final Karein</button>
+        </div>
+    </div>
+
+    <script>
+        const WHATSAPP_NUMBER = "919876543210";
+        const products = [
+            { id: 1, name: "Ghar ka Shuddh Aam ka Achar", category: "achar", price: 180, weight: "500g", ingredients: "Kacchi Kairi, Sarson Tel, Methi, Saunf, Hing", maker: "Sunita Tai aur unki team ne taiyar kiya", emoji: "🥭" },
+            { id: 2, name: "Paramparik Kanda Lasun Kala Masala", category: "masale", price: 220, weight: "500g", ingredients: "Byadgi Mirchi, Dhaniya, Khopra, 18 Khade Masale", maker: "Kavita Didi ke khas nuskhe se bana", emoji: "🌶️" },
+            { id: 3, name: "Haath se Bele Urad & Moong Papad", category: "papad", price: 150, weight: "500g", ingredients: "Shuddh Urad Dal, Kali Mirch, Hing, Sendha Namak", maker: "Meena Tai dwara dhoop mein sukhaya gaya", emoji: "🫓" },
+            { id: 4, name: "Shuddh Selam Haldi Powder", category: "masale", price: 140, weight: "500g", ingredients: "100% Natural Selam Haldi (High Curcumin)", maker: "Rekha Ji ki team dwara bina rang milaye pisa gaya", emoji: "🟡" },
+            { id: 5, name: "Chatpata Nimbu & Mirchi Achar", category: "achar", price: 160, weight: "400g", ingredients: "Taza Kagzi Nimbu, Hari Mirch, Ajwain, Kala Namak", maker: "Sunita Tai ne paramparik tarike se banaya", emoji: "🍋" },
+            { id: 6, name: "Handmade Cotton Tote Bag & Batua", category: "craft", price: 299, weight: "1 Set", ingredients: "100% Pure Cotton Kapda, Haath ki Kadhai", maker: "Suman Tai (Silai Vibhag) dwara banaya gaya", emoji: "👜" }
+        ];
+
+        let cart = [];
+
+        function renderProducts(filter = "all") {
+            const grid = document.getElementById("productGrid");
+            grid.innerHTML = "";
+            const filtered = filter === "all" ? products : products.filter(p => p.category === filter);
+            filtered.forEach(p => {
+                grid.innerHTML += `
+                    <div class="product-card">
+                        <div class="product-thumb">${p.emoji}</div>
+                        <div class="product-info">
+                            <span class="maker-badge">👩‍🍳 ${p.maker}</span>
+                            <h3>${p.name}</h3>
+                            <p class="ingredients"><strong>Samagri:</strong> ${p.ingredients}</p>
+                            <div class="price-row">
+                                <span class="price-tag">₹${p.price}</span>
+                                <span>Wazan: ${p.weight}</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-primary btn-sm" onclick="addToCart(${p.id})">🛒 Cart mein Dalein</button>
+                                <button class="btn btn-whatsapp btn-sm" onclick="orderWhatsApp('${p.name} (${p.weight}) - ₹${p.price}')">💬 WhatsApp</button>
+                            </div>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        function filterProducts(cat, btn) {
+            document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            renderProducts(cat);
+        }
+
+        function orderWhatsApp(item) {
+            const text = `Namaste Annapurna Mahila Bachat Gat! Mujhe ye order karna hai:
+👉 *${item}*
+Kripya delivery ki jankari dein.`;
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
+        }
+
+        function addToCart(id) {
+            const item = products.find(p => p.id === id);
+            cart.push(item);
+            updateCart();
+            alert(item.name + " aapki tokri (cart) mein jud gaya hai!");
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function updateCart() {
+            document.getElementById("cartCount").innerText = cart.length;
+            const div = document.getElementById("cartItems");
+            if (cart.length === 0) {
+                div.innerHTML = "<p>Abhi aapki tokri khali hai.</p>";
+                document.getElementById("cartTotal").innerText = "₹0";
+                return;
+            }
+            div.innerHTML = "";
+            let total = 0;
+            cart.forEach((item, i) => {
+                total += item.price;
+                div.innerHTML += `<div class="cart-item-row"><div><strong>${item.name}</strong><br><small>₹${item.price}</small></div><button onclick="removeFromCart(${i})" style="color:red;border:none;background:none;cursor:pointer;">✕</button></div>`;
+            });
+            document.getElementById("cartTotal").innerText = "₹" + total;
+        }
+
+        function toggleCart() {
+            document.getElementById("cartDrawer").classList.toggle("open");
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) { alert("Pehle tokri mein kuch products dalein!"); return; }
+            let msg = "Namaste! Mera Order List:
+
+" + cart.map((i, idx) => `${idx + 1}. ${i.name} (${i.weight}) - ₹${i.price}`).join("
+");
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            msg += `
+
+*Kul Rashi: ₹${total}*
+Kripya mera order confirm karein.`;
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
+        }
+
+        function submitBulkOrder(e) {
+            e.preventDefault();
+            const msg = `*Naya Bulk / Gifting Inquiry*
+👤 Naam: ${document.getElementById("bulkName").value}
+📞 Phone: ${document.getElementById("bulkPhone").value}
+📦 Prakar: ${document.getElementById("bulkType").value}
+📝 Vivaran: ${document.getElementById("bulkMsg").value}`;
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
+        }
+
+        const translations = {
+            hi: {
+                hero_tagline: "“Mahilaon ke haathon ka swad aur mehnat, ab aapke ghar tak”",
+                hero_desc: "Bina kisi milawat ya chemical ke, paramparik tarike se hamare bachat gat ki behno dwara banaye gaye shuddh achar, papad, masale aur hastkala utpad.",
+                btn_shop: "Products Dekhein",
+                btn_trial: "₹199 Trial Box Mangwayein",
+                story_title: "Humari Kahani & Sadasya",
+                prod_title: "Hamare Udyog ke Products"
+            },
+            en: {
+                hero_tagline: "“The taste and hard work of women's hands, now delivered to your home”",
+                hero_desc: "Pure, chemical-free pickles, papads, spices, and handicrafts traditionally handcrafted with love by our Self-Help Group sisters.",
+                btn_shop: "Explore Products",
+                btn_trial: "Order ₹199 Trial Box",
+                story_title: "Our Journey & Members",
+                prod_title: "Our Enterprise Products"
+            },
+            mr: {
+                hero_tagline: "“महिलांच्या हाताची चव आणि मेहनत, आता थेट तुमच्या घरी”",
+                hero_desc: "कोणत्याही भेसळीशिवाय पारंपारिक पद्धतीने आमच्या बचत गटातील भगिनींनी तयार केलेले शुद्ध लोणचे, पापड, मसाले आणि हस्तकला वस्तू.",
+                btn_shop: "उत्पादने पहा",
+                btn_trial: "₹१९९ ट्रायल बॉक्स मागवा",
+                story_title: "आमची गोष्ट आणि सदस्य",
+                prod_title: "आमच्या उद्योगाची उत्पादने"
+            }
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById("languageSwitcher").value;
+            document.querySelectorAll("[data-key]").forEach(el => {
+                const key = el.getAttribute("data-key");
+                if (translations[lang][key]) el.innerText = translations[lang][key];
+            });
+        }
+
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
+        }
+
+        renderProducts();
+    </script>
+</body>
+</html>
+```
